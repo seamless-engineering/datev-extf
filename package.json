@@ -1,0 +1,53 @@
+{
+  "name": "@seamless-engineering/datev-extf",
+  "version": "0.1.0",
+  "description": "Validate and write DATEV-Format (EXTF) files: Buchungsstapel and Debitoren/Kreditoren, with findings in German and English.",
+  "keywords": [
+    "datev",
+    "extf",
+    "buchungsstapel",
+    "datev-format",
+    "debitoren",
+    "kreditoren",
+    "skr03",
+    "skr04",
+    "csv",
+    "accounting"
+  ],
+  "license": "MIT",
+  "author": "seamless.engineering (https://seamless.engineering)",
+  "homepage": "https://github.com/seamless-engineering/datev-extf#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seamless-engineering/datev-extf.git"
+  },
+  "bugs": "https://github.com/seamless-engineering/datev-extf/issues",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.11"
+  }
+}
