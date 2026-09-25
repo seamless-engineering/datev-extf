@@ -41,6 +41,19 @@ function cp1252Byte(code: number): number | undefined {
   return CP1252_HIGH[code];
 }
 
+/** Character for each byte 0x80-0x9F in Windows-1252; the five unassigned bytes map to themselves. */
+const CP1252_LOW = new Map(Object.entries(CP1252_HIGH).map(([code, byte]) => [byte, String.fromCharCode(Number(code))]));
+
+/**
+ * Decode Windows-1252 by hand. Node before 22 treats "windows-1252" in
+ * TextDecoder as Latin-1, which turns € – „ “ into invisible control codes.
+ */
+function decodeCp1252(bytes: Uint8Array): string {
+  let text = "";
+  for (const byte of bytes) text += CP1252_LOW.get(byte) ?? String.fromCharCode(byte);
+  return text;
+}
+
 /** Whether every character of `text` exists in Windows-1252. */
 export function fitsCp1252(text: string): boolean {
   for (const char of text) {
@@ -78,7 +91,7 @@ export function decodeBytes(bytes: Uint8Array): Decoded {
     const text = new TextDecoder("utf-8", { fatal: true }).decode(body);
     return { text, encoding: bom ? "utf-8-bom" : "utf-8", nonAscii };
   } catch {
-    return { text: new TextDecoder("windows-1252").decode(body), encoding: "windows-1252", nonAscii };
+    return { text: decodeCp1252(body), encoding: "windows-1252", nonAscii };
   }
 }
 
