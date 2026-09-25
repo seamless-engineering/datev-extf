@@ -6,7 +6,7 @@ Validate and write DATEV-Format (EXTF) files in TypeScript: **Buchungsstapel** (
 
 Try it in the browser, no upload: [DATEV EXTF validator](https://seamless.engineering/de/tools/datev-extf-validator/) ([English](https://seamless.engineering/tools/datev-extf-validator/)).
 
-- Zero runtime dependencies. Runs in browsers, Node 18+, Deno and Bun.
+- Zero runtime dependencies. Runs in browsers, Node 20+, Deno and Bun.
 - Reads Windows-1252 and UTF-8 (with or without BOM), writes Windows-1252 as DATEV expects.
 - Rules come from DATEV's own material: the field regexes of the Formatbeschreibung on developer.datev.de, the field definitions shipped with the DATEV-Format Prüfprogramm, and the `#REW` import messages from the DATEV Hilfe-Center. Where those sources disagree, the check is a warning, not an error.
 
@@ -76,5 +76,9 @@ DATEV and DATEV-Format are trademarks of DATEV eG. This project is not affiliate
 ## Maintenance
 
 Maintained by [seamless.engineering](https://seamless.engineering) for our own production use: we run managed [DATEV integrations](https://seamless.engineering/de/integrations/) for shops, payment providers and ERPs, fully EU-hosted. Issues and PRs welcome, no SLA.
+
+## Releasing
+
+Bump `version` in `package.json`, commit, then tag and push: `git tag v0.1.1 && git push origin v0.1.1`. The release workflow publishes to npm with provenance via trusted publishing.
 
 MIT licence.
