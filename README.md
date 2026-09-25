@@ -1,5 +1,9 @@
 # datev-extf
 
+[![npm](https://img.shields.io/npm/v/@seamless-engineering/datev-extf)](https://www.npmjs.com/package/@seamless-engineering/datev-extf)
+[![CI](https://github.com/seamless-engineering/datev-extf/actions/workflows/ci.yml/badge.svg)](https://github.com/seamless-engineering/datev-extf/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+
 Validate and write DATEV-Format (EXTF) files in TypeScript: **Buchungsstapel** (booking batches) and **Debitoren/Kreditoren** (customer and supplier master data). Every finding comes with a line, a field and a plain-language explanation in German or English.
 
 *Deutsch:* Prüft und schreibt Dateien im DATEV-Format (EXTF). Der Validator meldet Fehler wie Punkt statt Komma im Umsatz, fehlende führende Null im Belegdatum, BU-Schlüssel auf Automatikkonten oder zu lange Kontonummern, jeweils mit Zeile, Feld und einer verständlichen Erklärung, bevor DATEV den Import ablehnt.
@@ -11,6 +15,8 @@ Try it in the browser, no upload: [DATEV EXTF validator](https://seamless.engine
 - Rules come from DATEV's own material: the field regexes of the Formatbeschreibung on developer.datev.de, the field definitions shipped with the DATEV-Format Prüfprogramm, and the `#REW` import messages from the DATEV Hilfe-Center. Where those sources disagree, the check is a warning, not an error.
 
 ## Install
+
+From npm: [`@seamless-engineering/datev-extf`](https://www.npmjs.com/package/@seamless-engineering/datev-extf)
 
 ```sh
 npm install @seamless-engineering/datev-extf
